@@ -1,0 +1,197 @@
+@import 'tailwindcss';
+@plugin '@tailwindcss/forms';
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+@source '../**/*.blade.php';
+@source '../**/*.js';
+
+/* ============================================
+   DESIGN SYSTEM — LaporKominfo
+   Diskominfo Kab. Sumba Barat Daya
+   ============================================ */
+
+@theme {
+    /* Font Family */
+    --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+
+    /* Primary — Deep Blue */
+    --color-primary-50: #EFF6FF;
+    --color-primary-100: #DBEAFE;
+    --color-primary-200: #BFDBFE;
+    --color-primary-300: #93C5FD;
+    --color-primary-400: #60A5FA;
+    --color-primary-500: #3B82F6;
+    --color-primary-600: #2563EB;
+    --color-primary-700: #1D4ED8;
+    --color-primary-800: #1E40AF;
+    --color-primary-900: #1E3A8A;
+    --color-primary-950: #172554;
+
+    /* Secondary — Teal */
+    --color-secondary-50: #F0FDFA;
+    --color-secondary-100: #CCFBF1;
+    --color-secondary-200: #99F6E4;
+    --color-secondary-300: #5EEAD4;
+    --color-secondary-400: #2DD4BF;
+    --color-secondary-500: #14B8A6;
+    --color-secondary-600: #0D9488;
+    --color-secondary-700: #0F766E;
+    --color-secondary-800: #115E59;
+    --color-secondary-900: #134E4A;
+    --color-secondary-950: #042F2E;
+
+    /* Surface */
+    --color-surface: #F8FAFC;
+    --color-surface-alt: #F1F5F9;
+}
+
+/* ============================================
+   CUSTOM UTILITY CLASSES
+   ============================================ */
+
+/* Glassmorphism Card */
+.glass {
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.glass-dark {
+    background: rgba(15, 23, 42, 0.7);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Gradient Backgrounds */
+.gradient-hero {
+    background: linear-gradient(135deg, #1E40AF 0%, #0F766E 50%, #14B8A6 100%);
+}
+
+.gradient-hero-soft {
+    background: linear-gradient(135deg, #EFF6FF 0%, #F0FDFA 100%);
+}
+
+.gradient-card {
+    background: linear-gradient(135deg, rgba(59,130,246,0.05) 0%, rgba(20,184,166,0.05) 100%);
+}
+
+/* Status Colors */
+.status-menunggu { --tw-bg-opacity: 1; background-color: rgb(251 191 36 / var(--tw-bg-opacity)); }
+.status-diverifikasi { --tw-bg-opacity: 1; background-color: rgb(59 130 246 / var(--tw-bg-opacity)); }
+.status-diproses { --tw-bg-opacity: 1; background-color: rgb(139 92 246 / var(--tw-bg-opacity)); }
+.status-selesai { --tw-bg-opacity: 1; background-color: rgb(34 197 94 / var(--tw-bg-opacity)); }
+.status-ditolak { --tw-bg-opacity: 1; background-color: rgb(239 68 68 / var(--tw-bg-opacity)); }
+
+/* Animations */
+@keyframes fade-in-up {
+    from {
+        opacity: 0;
+        transform: translateY(24px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slide-in-right {
+    from {
+        opacity: 0;
+        transform: translateX(24px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes pulse-soft {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
+}
+
+@keyframes count-up {
+    from { opacity: 0; transform: scale(0.5); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+.animate-fade-in-up {
+    animation: fade-in-up 0.6s ease-out both;
+}
+
+.animate-fade-in {
+    animation: fade-in 0.5s ease-out both;
+}
+
+.animate-slide-in-right {
+    animation: slide-in-right 0.5s ease-out both;
+}
+
+.animate-pulse-soft {
+    animation: pulse-soft 2s ease-in-out infinite;
+}
+
+/* Staggered animation delays */
+.delay-100 { animation-delay: 100ms; }
+.delay-200 { animation-delay: 200ms; }
+.delay-300 { animation-delay: 300ms; }
+.delay-400 { animation-delay: 400ms; }
+.delay-500 { animation-delay: 500ms; }
+.delay-600 { animation-delay: 600ms; }
+
+/* Hover card lift effect */
+.hover-lift {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.hover-lift:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+    width: 6px;
+}
+::-webkit-scrollbar-track {
+    background: #f1f5f9;
+}
+::-webkit-scrollbar-thumb {
+    background: #94a3b8;
+    border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #64748b;
+}
+
+/* File Upload Dropzone */
+.dropzone {
+    border: 2px dashed #CBD5E1;
+    transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+.dropzone:hover,
+.dropzone.dragover {
+    border-color: #3B82F6;
+    background-color: #EFF6FF;
+}
+
+/* Step Wizard */
+.step-connector {
+    position: absolute;
+    top: 50%;
+    left: 100%;
+    width: 100%;
+    height: 2px;
+    background: #E2E8F0;
+    transform: translateY(-50%);
+}
+.step-connector.active {
+    background: linear-gradient(90deg, #3B82F6, #14B8A6);
+}
